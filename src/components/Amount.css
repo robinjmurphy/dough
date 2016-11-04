@@ -1,0 +1,15 @@
+.Amount__major {
+  font-size: 1.5em;
+}
+
+.Amount__symbol {
+  display: none;
+}
+
+.Amount--positive {
+  color: #56A101;
+}
+
+.Amount--positive .Amount__symbol {
+  display: inline;
+}

@@ -1,15 +1,3 @@
-.TransactionGroup__header {
-  background-color: #F7F7F7;
-  padding: 8px 16px;
-  border-top: 1px solid #DFDEE1;
-  border-bottom: 1px solid #DFDEE1;
-}
-
-.TransactionGroup__heading {
-  text-transform: uppercase;
-  font-size: 1.125em;
-}
-
 .Transaction {
   overflow: hidden;
   padding: 16px;
@@ -51,20 +39,4 @@
   float: right;
   font-size: 1.25em;
   line-height: 28px;
-}
-
-.Amount__major {
-  font-size: 1.5em;
-}
-
-.Amount__symbol {
-  display: none;
-}
-
-.Amount--positive {
-  color: #56A101;
-}
-
-.Amount--positive .Amount__symbol {
-  display: inline;
 }
