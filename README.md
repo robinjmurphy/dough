@@ -4,7 +4,7 @@
 
 This is very much a _work in progress_ 🚧. I'm using this application to practice React and Redux. It currently supports a simple mobile-friendly transactions view.
 
-<img src="screenshot.png" width="300"/>
+<img src="screenshot.png" width="400"/>
 
 ## Features
 
