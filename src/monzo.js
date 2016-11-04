@@ -34,7 +34,7 @@ const getAccount = (token) => {
 const getTransactions = (token, since) => {
   return getAccount(token)
     .then(account => get(`/transactions?account_id=${account.id}&since=${since}&expand[]=merchant`, token))
-    .then(body => _.get(body, 'transactions', []));
+    .then(body => _.get(body, 'transactions', []).reverse());
 };
 
 export default {
