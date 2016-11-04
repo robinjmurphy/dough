@@ -18,7 +18,7 @@ export default (state = {
     case RECEIVE_TRANSACTIONS:
       return Object.assign({}, state, {
         isFetching: false,
-        transactions: action.transactions,
+        transactions: action.transactions.reverse(),
         lastUpdated: action.receivedAt
       });
     case RECEIVE_TRANSACTIONS_FAILURE:

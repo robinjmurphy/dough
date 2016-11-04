@@ -20,7 +20,6 @@ const toGroup = (transactions) => {
 
 const groupByDay = (transactions) => {
   return _(transactions)
-    .reverse()
     .map(addDay)
     .groupBy('day')
     .map(toGroup)

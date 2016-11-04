@@ -16,3 +16,14 @@
   top: 0.12em;
   font-size: 1.1em;
 }
+
+.Header__logo a:link,
+.Header__logo a:visited {
+  text-decoration: none;
+  color: #fff;
+}
+
+.Header__logo a:hover,
+.Header__logo a:active {
+  color: #E34B5F;
+}
