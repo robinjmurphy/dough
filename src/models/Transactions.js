@@ -22,7 +22,7 @@ const toTransaction = (transaction) => {
 
 const find = (token, since) => {
   return monzo.getTransactions(token, since)
-    .then(transactions => transactions.map(toTransaction));
+    .then(transactions => transactions.map(toTransaction).reverse());
 };
 
 export default {
