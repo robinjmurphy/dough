@@ -1,30 +1,20 @@
-import React, { Component } from 'react';
-import moment from 'moment';
-
+import { connect } from 'react-redux';
 import Transactions from '../components/Transactions';
-import monzo from '../lib/client';
+import { fetchTransactions } from '../actions/transactions';
 
-export default class TransactionsContainer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      transactions: []
-    };
-  }
+const mapStateToProps = (state) => {
+return state.transactions;
+};
 
-  componentDidMount() {
-    const token = process.env.REACT_APP_MONZO_TOKEN;
-    const since = moment().subtract(3, 'days').toISOString();
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadTransactions: (token, since) => {
+      dispatch(fetchTransactions(token, since));
+    }
+  };
+};
 
-    monzo.getTransactions(token, since)
-      .then((transactions) => this.setState({ transactions }));
-  }
-
-  render() {
-    const { transactions } = this.state;
-
-    return (
-      <Transactions transactions={transactions}/>
-    );
-  }
-}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Transactions);
