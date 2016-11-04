@@ -2,13 +2,12 @@ import moment from 'moment';
 import React, { Component } from 'react';
 
 import TransactionsList from './TransactionsList';
-import TransactionsDetail from './TransactionsDetail';
 
 export default class Transactions extends Component {
   componentDidMount() {
     const { loadTransactions } = this.props;
     const token = process.env.REACT_APP_MONZO_TOKEN;
-    const since = moment().subtract(3, 'days').toISOString();
+    const since = moment().subtract(30, 'days').toISOString();
 
     loadTransactions(token, since);
   }
@@ -17,7 +16,6 @@ export default class Transactions extends Component {
     return (
       <div>
         <TransactionsList {...this.props}/>
-        <TransactionsDetail {...this.props}/>
       </div>
     );
   }

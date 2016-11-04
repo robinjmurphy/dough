@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import transactions from './transactions';
+import { loadingBarReducer } from 'react-redux-loading-bar';
 
 export default combineReducers({
-  transactions
+  transactions,
+  loadingBar: loadingBarReducer
 });

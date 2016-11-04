@@ -1,0 +1,64 @@
+.TransactionGroup__header {
+  background-color: #F7F7F7;
+  padding: 8px 16px;
+  border-top: 1px solid #DFDEE1;
+  border-bottom: 1px solid #DFDEE1;
+}
+
+.TransactionGroup__heading {
+  text-transform: uppercase;
+  font-size: 1.125em;
+}
+
+.Transaction {
+  overflow: hidden;
+  padding: 16px;
+  border-bottom: 1px solid #DFDEE1;
+}
+
+.Transaction:last-child {
+  border-bottom: none;
+}
+
+.Transaction__logo {
+  display: block;
+  float: left;
+  border: 1px solid #DFDEE1;
+  border-radius: 10px;
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+  margin-right: 16px;
+}
+
+.Transaction__logo img {
+  max-width: 100%;
+}
+
+.Transaction__name {
+  font-size: 1.25em;
+  line-height: 28px;
+}
+
+.Transaction__amount {
+  display: block;
+  float: right;
+  font-size: 1.25em;
+  line-height: 28px;
+}
+
+.Amount__major {
+  font-size: 1.5em;
+}
+
+.Amount__symbol {
+  display: none;
+}
+
+.Amount--positive {
+  color: #56A101;
+}
+
+.Amount--positive .Amount__symbol {
+  display: inline;
+}

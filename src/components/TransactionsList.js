@@ -3,6 +3,9 @@ import _ from 'lodash';
 import moment from 'moment';
 
 import Error from './Error';
+import './TransactionsList.css';
+
+const defaultImage = 'http://placehold.it/28x28/EEEEEE?text=+';
 
 function getFormattedDay(day) {
   const date = moment(day);
@@ -20,8 +23,13 @@ const Amount = ({
   amount
 }) => {
   const rounded = (amount / 100).toFixed(2);
-  const matches = /([\+\-])(\d+).(\d+)/.exec(rounded.toString());
-  const symbol = matches[1];
+  const matches = /(-?)(\d+).(\d+)/.exec(rounded.toString());
+
+  if (!matches) {
+    return null;
+  }
+
+  const symbol = matches[1] || '+';
   const major = matches[2];
   const minor = matches[3];
   const classNames = ['Amount'];
@@ -38,15 +46,19 @@ const Amount = ({
 };
 
 const Transaction = (props) => {
+  if (_.isEmpty(_.get(props,'merchant.logo'))) {
+    _.set(props, 'merchant.logo', defaultImage);
+  }
+
   const name = _.get(props, 'merchant.name', props.description);
-  const image = _.get(props, 'merchant.logo');
+  const image = _.get(props, 'merchant.logo', defaultImage);
   const amount = _.get(props, 'amount', 0);
 
   return (
-    <li className="TransactionListTransaction">
-      <span className="TransactionListTransaction__logo"><img src={image} alt={name} width="100"/></span>
-      <span className="TransactionListTransaction__name">{name}</span>
-      <span className="TransactionListTransaction__amount"><Amount amount={amount}/></span>
+    <li className="Transaction">
+      <span className="Transaction__logo"><img src={image} alt={name}/></span>
+      <span className="Transaction__name">{name}</span>
+      <span className="Transaction__amount"><Amount amount={amount}/></span>
     </li>
   );
 };
@@ -58,21 +70,26 @@ const TransactionGroup = ({
   const fomatted = getFormattedDay(day);
 
   return(
-    <div>
-      <h3>{fomatted}</h3>
-      <ul>
-        { transactions.map((transaction, i) => {
-          return (
-            <Transaction {...transaction} key={i}/>
-          );
-        })}
-      </ul>
+    <div className="TransactionGroup">
+      <header className="TransactionGroup__header">
+        <h3 className="TransactionGroup__heading">{fomatted}</h3>
+      </header>
+      <div className="TransactionGroup__Main">
+        <ul>
+          { transactions.map((transaction, i) => {
+            return (
+              <Transaction {...transaction} key={i}/>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };
 
 export default ({
   transactions,
+  isFetching,
   error
 }) => {
   if (error) return <Error message={error.message} stack={error.stack}/>;
@@ -95,8 +112,8 @@ export default ({
 
   return(
     <div>
-      { groupedByDay.map((group) => {
-        return <TransactionGroup {...group}/>;
+      { groupedByDay.map((group, i) => {
+        return <TransactionGroup {...group} key={i}/>;
       }) }
     </div>
   );
