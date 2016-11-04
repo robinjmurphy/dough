@@ -10,3 +10,9 @@
   font-family: "futura-pt-condensed";
   text-transform: uppercase;
 }
+
+.Header__emoji {
+  position: relative;
+  top: 0.12em;
+  font-size: 1.1em;
+}

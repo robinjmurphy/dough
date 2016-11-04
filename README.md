@@ -2,10 +2,13 @@
 
 > A web application for [Monzo](https://monzo.com/)
 
+This is very much a _work in progress_ 🚧. I'm using this application to practice React and Redux. It currently supports a simple mobile-friendly transactions view.
+
+<img src="screenshot.png" width="300"/>
+
 ## Features
 
 * View your transactions
-* See your balance
 
 ## Installation
 
