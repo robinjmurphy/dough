@@ -5,17 +5,19 @@ import moment from 'moment';
 import Transaction from './Transaction';
 import './TransactionGroup.css';
 
-function getFormattedDay(day) {
+const getFormattedDay = (day) => {
   const date = moment(day);
+  const today = moment();
+  const yesterday = moment().subtract(1, 'day');
 
-  if (date.isSame(moment(), 'day')) {
+  if (date.isSame(today, 'day')) {
     return 'Today';
-  } else if (date.isSame(moment().subtract(1, 'day'), 'day')) {
+  } else if (date.isSame(yesterday, 'day')) {
     return 'Yesterday';
   } else {
     return date.format('dddd, D MMM');
   }
-}
+};
 
 export default ({
   day,

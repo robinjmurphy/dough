@@ -1,4 +1,4 @@
-import monzo from '../monzo';
+import Transactions from '../models/Transactions';
 
 export const REQUEST_TRANSACTIONS = 'REQUEST_TRANSACTIONS';
 
@@ -32,7 +32,7 @@ export function fetchTransactions(token, since) {
   return (dispatch) => {
     dispatch(requestTransactions());
 
-    return monzo.getTransactions(token, since)
+    return Transactions.find(token, since)
       .then(transactions => dispatch(receiveTransactions(transactions)))
       .catch(err => dispatch(receiveTransactionsFailure(err)));
   };

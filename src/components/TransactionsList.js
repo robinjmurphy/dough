@@ -1,15 +1,8 @@
 import React from 'react';
 import _ from 'lodash';
-import moment from 'moment';
 
 import Error from './Error';
 import TransactionGroup from './TransactionGroup';
-
-const addDay = (transaction) => {
-  return _.assign({}, transaction, {
-    day: moment(transaction.created).format('YYYY-MM-DD'),
-  });
-};
 
 const toGroup = (transactions) => {
   return {
@@ -20,7 +13,6 @@ const toGroup = (transactions) => {
 
 const groupByDay = (transactions) => {
   return _(transactions)
-    .map(addDay)
     .groupBy('day')
     .map(toGroup)
     .value();
@@ -35,13 +27,13 @@ export default ({
     return <Error message={error.message} stack={error.stack} status={error.status}/>;
   }
 
-  const groupedByDay = groupByDay(transactions);
+  const grouped = groupByDay(transactions);
 
   return(
     <div>
-      { groupedByDay.map((group, i) => {
+      { grouped.map((group, i) => {
         return <TransactionGroup {...group} key={i}/>;
-      }) }
+      })}
     </div>
   );
 };
