@@ -38,6 +38,12 @@
 .Transaction__name {
   font-size: 1.25em;
   line-height: 28px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 65%;
+  display: block;
+  float: left;
 }
 
 .Transaction__amount {

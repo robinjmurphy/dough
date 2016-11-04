@@ -1,0 +1,35 @@
+.Error {
+  text-align: center;
+  padding: 16px;
+  margin-top: 16px;
+  font-size: 1.25em;
+}
+
+.Error__exclamation {
+  font-size: 5em;
+  font-family: "futura-pt-condensed";
+}
+
+.Error__message {
+  font-size: 1.25em;
+  margin-bottom: 1em;
+}
+
+.Error__detail {
+  font-family: monospace;
+  color: #999;
+}
+
+.Error__fix {
+  color: #666;
+  line-height: 1.5;
+}
+
+.Error code {
+  font-family: Menlo, monospace;
+  color: #E34B5F;
+  background-color: #eee;
+  font-size: 0.8em;
+  padding: 2px 4px;
+  border-radius: 2px;
+}

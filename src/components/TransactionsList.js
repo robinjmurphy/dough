@@ -92,7 +92,7 @@ export default ({
   isFetching,
   error
 }) => {
-  if (error) return <Error message={error.message} stack={error.stack}/>;
+  if (error) return <Error message={error.message} stack={error.stack} status={error.status}/>;
 
   const groupedByDay = _(transactions)
     .reverse()
